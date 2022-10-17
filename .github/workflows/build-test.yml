@@ -18,9 +18,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Cache
-        uses: coursier/cache-action@v6
-
       - name: Setup Java and Scala
         uses: olafurpg/setup-scala@v13
         with:
@@ -31,9 +28,3 @@ jobs:
 
       - name: Run tests
         run: sbt test -J-Xmx4G
-
-      - name: Upload compilation cache
-        uses: actions/upload-artifact@v3
-        with:
-          name: artifact.zip
-          path: /tmp/cache

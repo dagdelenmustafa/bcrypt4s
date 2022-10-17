@@ -1,17 +1,24 @@
 name: Release
 on:
   push:
-    branches: [main]
     tags: ["*"]
+
 jobs:
   publish:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
+      - name: Checkout current branch
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: olafurpg/setup-scala@v13
-      - run: sbt ci-release
+
+      - name: Setup Java and Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: 11
+
+      - name: Release to sonatype
+        run: sbt ci-release
         env:
           PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
           PGP_SECRET: ${{ secrets.PGP_SECRET }}
