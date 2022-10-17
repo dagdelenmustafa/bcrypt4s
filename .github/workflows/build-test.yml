@@ -24,7 +24,7 @@ jobs:
       - name: Setup Java and Scala
         uses: olafurpg/setup-scala@v13
         with:
-          java-version: temurin@17
+          java-version: 11
 
       - name: Run checks
         run: sbt scalafmtCheckAll headerCheck
