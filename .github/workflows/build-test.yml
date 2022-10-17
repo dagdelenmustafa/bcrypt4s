@@ -27,12 +27,10 @@ jobs:
           java-version: temurin@17
 
       - name: Run checks
-          run: |
-            sbt scalafmtCheckAll headerCheck
+          run: sbt scalafmtCheckAll headerCheck
 
       - name: Run tests
-        run: |
-          sbt test -J-Xmx4G
+        run: sbt test -J-Xmx4G
 
       - name: Upload compilation cache
         uses: actions/upload-artifact@v3
