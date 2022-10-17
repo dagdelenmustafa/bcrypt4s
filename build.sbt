@@ -3,6 +3,7 @@ ThisBuild / versionScheme := Some("early-semver")
 
 lazy val root = (project in file(".")).settings(
   name := "bcrypt4s",
+  startYear := Some(2022),
   organization := "io.github.dagdelenmustafa",
   organizationName := "dagdelenmustafa",
   homepage := Some(url("https://github.com/dagdelenmustafa/bcrypt4s")),

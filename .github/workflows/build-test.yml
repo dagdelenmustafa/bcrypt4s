@@ -1,0 +1,41 @@
+name: Build and Test
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: [ "*" ]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Cache
+        uses: coursier/cache-action@v6
+
+      - name: Setup Java and Scala
+        uses: olafurpg/setup-scala@v13
+        with:
+          java-version: temurin@17
+
+      - name: Run checks
+          run: |
+            sbt scalafmtCheckAll headerCheck
+
+      - name: Run tests
+        run: |
+          sbt test -J-Xmx4G
+
+      - name: Upload compilation cache
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact.zip
+          path: /tmp/cache
