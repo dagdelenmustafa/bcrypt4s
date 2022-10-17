@@ -8,7 +8,6 @@ lazy val root = (project in file(".")).settings(
   scmInfo := Some(
     ScmInfo(url("https://github.com/dagdelenmustafa/bcrypt4s"), "git@github.com:dagdelenmustafa/bcrypt4s.git")
   ),
-  usePgpKeyHex("23F8E7FCED8D8E94497F1B0930EB464AFFA4A4FD"),
   developers := List(
     Developer("dagdelenmustafa",
               "Mustafa Dağdelen",
