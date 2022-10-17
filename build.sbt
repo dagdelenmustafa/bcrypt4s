@@ -1,9 +1,5 @@
 ThisBuild / scalaVersion := "2.13.5"
 ThisBuild / versionScheme := Some("early-semver")
-ThisBuild / version := {
-  if (!sys.env.contains("CI")) "dev-SNAPSHOT"
-  else (ThisBuild / version).value
-}
 
 lazy val root = (project in file(".")).settings(
   name := "bcrypt4s",
