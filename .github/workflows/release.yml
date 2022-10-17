@@ -19,7 +19,7 @@ jobs:
 
       - name: Release to sonatype
         run: |
-          echo $PGP_SECRET | base64 --decode | gpg --import --no-tty --batch --yes
+          export GPG_TTY=$(tty)
           sbt ci-release
         env:
           PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
