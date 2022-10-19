@@ -7,7 +7,7 @@ jobs:
   run-build-test-workflow:
     uses: ./.github/workflows/build-test.yml
     secrets:
-      CODECOV_TOKEN: {{ secrets.CODECOV_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   publish:
     runs-on: ubuntu-latest
