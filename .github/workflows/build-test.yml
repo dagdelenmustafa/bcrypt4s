@@ -5,9 +5,6 @@ on:
   pull_request:
     branches: [ "*" ]
   workflow_call:
-    secrets:
-      token:
-        required: true
 
 concurrency:
   group: ci-${{ github.ref }}
