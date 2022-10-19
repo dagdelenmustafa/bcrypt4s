@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-build-test-workflow:
-    uses: ./.github/workflows/build-test.yml@main
+    uses: ./.github/workflows/build-test.yml
     secrets: inherit
 
   publish:
