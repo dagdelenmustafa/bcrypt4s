@@ -7,6 +7,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Run build&test workflow
+        uses: ./.github/workflows/build-test.yml
+        secrets: inherit
+
       - name: Checkout current branch
         uses: actions/checkout@v3
         with:
